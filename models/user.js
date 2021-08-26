@@ -1,5 +1,6 @@
-const { Sequelize, DataTypes } = require("sequelize");
-const sequelize = require("../clients/db");
+
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
 
 class User extends Model {}
 
@@ -10,7 +11,7 @@ class User extends Model {}
       defaultValue: DataTypes.UUIDV1,
       primaryKey: true,
     },
-    // Model attributes are defined here
+
     userName: {
       type: DataTypes.STRING,
       allowNull: false,
