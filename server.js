@@ -4,7 +4,7 @@ const express = require("express");
 const db = require("./clients/db");
 const exphbs = require("express-handlebars");
 const app = express();
-
+const hbs = exphbs.create({ helpers });
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
