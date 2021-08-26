@@ -1,23 +1,41 @@
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = require('../clients/db');
+const { Sequelize, DataTypes } = require("sequelize");
+const sequelize = require("../clients/db");
 
-const User = sequelize.define('User', {
+class User extends Model {}
+
+  User.init(
+  {
     id: {
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV1,
-        primaryKey: true
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV1,
+      primaryKey: true,
     },
-  // Model attributes are defined here
-  firstName: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  lastName: {
-    type: DataTypes.STRING
-    // allowNull defaults to true
+    // Model attributes are defined here
+    userName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    
+    email: {
+      type : DataTypes.STRING,
+      isUnique :true,
+      allowNull:false,
+      validate:{
+          isEmail : true
+       }
+      },
+      password: {
+        type: DataTypes.STRING,
+        allowNull:false,
+      }
+},
+  {
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'user',
   }
-}, {
-    sequelize
-});
+);
 
-module.exports = User
+module.exports = User;
