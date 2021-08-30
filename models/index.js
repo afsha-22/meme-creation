@@ -1,7 +1,7 @@
 // import models
 const User = require('./User');
-const Comments = require('./Comments');
-const Likes = require('./Likes');
+const Comments = require('./Comment');
+const Like = require('./Like');
 const Post = require('./Post');
 
 User.hasMany(Post, {
@@ -14,13 +14,22 @@ Post.belongsTo(User, {
  
 });
 
-Post.belongsToMany(Likes, {
+Post.hasMany(Comment, {
 
-  foreignKey: ' post_ID:',
+  foreignKey: 'post_id:',
   
 });
+Post.hasMany(Like, {
 
-Comments.belongsToMany(Post, {
+  foreignKey: 'post_id:',
+  
+});
+Like.belongsTo(Post,{
+
+  foreignKey: 'post_id:',
+
+});
+Comments.belongsTo(Post, {
   foreignKey: 'post_id',
 });
 
@@ -28,5 +37,5 @@ module.exports = {
 User,
 Comments,
 Post,
-Likes
+Like
 };
