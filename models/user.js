@@ -5,12 +5,11 @@ const bcrypt = require('bcrypt');
 
 //bcrypt paasword 
 class User extends Model {
-  checkPassword(loginPW)
-  {
-    return bcrypt.compareSync(loginPw, this.password);
-  }
-
-}
+      checkPassword(loginPw)
+      {
+        return bcrypt.compareSync(loginPw, this.password);
+      }
+   }
 
   User.init(
   {
@@ -39,9 +38,15 @@ class User extends Model {
         validate:{
           len: [8],
         }
-      }
+      },
 },
   {
+        hooks: {
+          beforeCreate: async (newUserData) => {
+            newUserData.password = await bcrypt.hash(newUserData.password, 10);
+            return newUserData;
+          },
+        },  
     sequelize,
     timestamps: false,
     freezeTableName: true,
