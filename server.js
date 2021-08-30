@@ -6,6 +6,7 @@ const app = express();
 const path = require("path");
 const db = require("./clients/db");
 const exphbs = require("express-handlebars");
+const routes = require('./controllers');
 const hbs = exphbs.create({});
 
 app.engine("handlebars", hbs.engine);
@@ -21,9 +22,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 const PORT = process.env.PORT || 3000;
 
-app.get("/", (req, res) => {
-  res.render("home");
-});
+app.use(routes);
 
 db.sync().then(() => {
   app.listen(PORT, () => console.log(`Now listening on PORT ${PORT}`));
