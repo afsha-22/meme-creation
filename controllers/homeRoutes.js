@@ -11,4 +11,14 @@ router.get('/', async (req, res) => {
     res.render('home');
 });
 
+//render search-meme.handlebars
+router.get('/search-meme', async (req, res) => {
+    res.render('search-meme');
+});
+
+router.get('/create-meme', async (req, res) => {
+    res.render('create-meme');
+});
+
+
 module.exports = router;
