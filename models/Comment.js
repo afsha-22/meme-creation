@@ -10,7 +10,7 @@ Comment.init(
       defaultValue: DataTypes.UUIDV1,
       primaryKey: true,
     },
-     comments: {
+     comment: {
       type: DataTypes.STRING,
      },
     

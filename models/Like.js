@@ -10,11 +10,12 @@ Like.init(
       defaultValue: DataTypes.UUIDV1,
       primaryKey: true,
     },
-
     post_likes: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
     },
-
+    user_id: {
+      type: DataTypes.UUID
+    },
     post_id: {
       type: DataTypes.UUID,
       references: {
