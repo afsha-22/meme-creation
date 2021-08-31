@@ -4,7 +4,6 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const db = require("./clients/db");
 const exphbs = require("express-handlebars");
 const routes = require('./controllers');
 const hbs = exphbs.create({});
@@ -40,6 +39,6 @@ const sess = {
 app.use(session(sess));
 app.use(routes);
 
-db.sync().then(() => {
-  app.listen(PORT, () => console.log(`Now listening on PORT ${PORT}`));
+sequelize.sync().then(() => {
+    app.listen(PORT, () => console.log(`Now listening on PORT ${PORT}`));
 });
