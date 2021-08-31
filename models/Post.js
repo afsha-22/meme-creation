@@ -14,19 +14,21 @@ Post.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-
     user_id: {
       type: DataTypes.UUID,
       references:{
         model: 'user',
         key: 'id',      
       },
-      
     },
     image_url: {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    image_position: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    }
   },
   {
     sequelize,
