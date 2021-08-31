@@ -1,7 +1,7 @@
 // import models
 const User = require('./User');
 const Comments = require('./Comment');
-const Like = require('./Like');
+const Likes = require('./Like');
 const Post = require('./Post');
 
 User.hasMany(Post, {
