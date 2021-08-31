@@ -1,26 +1,17 @@
 <section class="container">
 <p class="h3">Hi Nick! Let's get to work and laugh, at the same time!</p>
 
-    <div class="row my-3">
-        {{> search-meme-image}}
-        {{> search-meme-image}}
-        {{> search-meme-image}}
-        {{> search-meme-image}}
-    </div>
+<div class="row my-3">
+    {{#each images}}
+        <div class="col-3">
+            <a href="/create-meme/{{this.id}}">
+                <img class="image-search" src="{{this.src.tiny}}" alt="meme image"/>
+            </a>
 
-    <div class="row my-3">
-        {{> search-meme-image}}
-        {{> search-meme-image}}
-        {{> search-meme-image}}
-        {{> search-meme-image}}
-    </div>
-
-    <div class="row my-3">
-        {{> search-meme-image}}
-        {{> search-meme-image}}
-        {{> search-meme-image}}
-        {{> search-meme-image}}
-    </div>
+        </div>
+    {{/each}}
+    
+</div>
 
 </section>
-<script src="./js/image-search.js"></script>
+{{!-- <script src="./js/image-search.js"></script> --}}

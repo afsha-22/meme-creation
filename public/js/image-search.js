@@ -39,4 +39,23 @@ const renderSearch = async (search) => {
   
 };
 
+const createMeme = async (event) => {
+    event.preventDefault();
+
+    const imageURL = event.target.getAttribute('data-image-url');
+
+    // document.location.replace(`/create-meme/${imageURL}`)
+
+    const request = await fetch('/create-meme', {method: 'GET', headers: { imageURL }});
+
+    console.log(request);
+
+    //how do i request
+
+};
+
 renderSearch('funny');
+
+imagesEL.forEach(imageEL => {
+    imageEL.addEventListener('click', createMeme);
+});
