@@ -18,7 +18,7 @@ const createPost = async (event) => {
     const imageURL = imageEL.getAttribute('src');
 
     const requestBody = {
-        imageCaption: caption,
+        image_caption: caption,
         image_url: imageURL,
         image_position: selectedPostion
     };

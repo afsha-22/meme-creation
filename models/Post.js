@@ -6,20 +6,16 @@ class Post extends Model {}
 Post.init(
   {
     id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV1,
+      type: DataTypes.INTEGER,
       primaryKey: true,
+      autoIncrement: true
     },
-    imageCaption: {
+    image_caption: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     user_id: {
-      type: DataTypes.UUID,
-      references:{
-        model: 'user',
-        key: 'id',      
-      },
+      type: DataTypes.INTEGER
     },
     image_url: {
       type: DataTypes.STRING,

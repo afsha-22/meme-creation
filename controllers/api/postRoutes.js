@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
         const userID = req.session.user_id;
 
         const request = {
-            imageCaption: imageCaption,
+            image_caption: imageCaption,
             user_id: userID,
             image_url: image_url,
             image_position: image_position
