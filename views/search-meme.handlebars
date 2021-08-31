@@ -1,11 +1,20 @@
 <section class="container">
 <p class="h3">Hi Nick! Let's get to work and laugh, at the same time!</p>
+<form id="searchForm" class="row g-3">
+    <div class="col-auto">
+        <label for="search" class="visually-hidden">Search</label>
+        <input type="text" class="form-control" id="search" placeholder="cats">
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-3">Search</button>
+    </div>
+</form>
 
 <div class="row my-3">
     {{#each images}}
         <div class="col-3">
-            <a href="/create-meme/{{this.id}}">
-                <img class="image-search" src="{{this.src.tiny}}" alt="meme image"/>
+            <a href="/create-meme/{{this.id}}" class="image-search">
+                <img src="{{this.src.tiny}}" alt="meme image"/>
             </a>
 
         </div>
@@ -14,4 +23,4 @@
 </div>
 
 </section>
-{{!-- <script src="./js/image-search.js"></script> --}}
+<script src="./js/image-search.js"></script>

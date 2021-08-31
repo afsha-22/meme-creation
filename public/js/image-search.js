@@ -1,5 +1,3 @@
-const imagesEL = document.querySelectorAll('.image-search');
-
 const getImages = async (query) => {
 
     const options = {
@@ -18,44 +16,28 @@ const getImages = async (query) => {
 
     const response = await request.json();
 
-    const photos = [];
-
-    response.photos.forEach(photo => {
-        photos.push(photo.src.tiny);
-    });
-
-    return photos;
+    return response.photos;
  
 };
 
-const renderSearch = async (search) => {
-    const images = await (getImages(search));
+const renderSearch = async (event) => {
+    event.preventDefault();
 
+    const imagesEL = document.querySelectorAll(".image-search");
+
+    const searchQuery =  document.querySelector('#search').value.trim();
+
+    const images = await (getImages(searchQuery));
+
+    console.log(images);
 
     imagesEL.forEach((imageEL, index) => {
-        imageEL.setAttribute('src', images[index]);
-        imageEL.setAttribute('data-image-url', images[index]);
+        imageEL.setAttribute('href', `/create-meme/${images[index].id}`);
+        imageEL.firstElementChild.setAttribute('src', images[index].src.tiny);
     });
   
 };
 
-const createMeme = async (event) => {
-    event.preventDefault();
-
-    const imageURL = event.target.getAttribute('data-image-url');
-
-    // document.location.replace(`/create-meme/${imageURL}`)
-
-    const request = await fetch('/create-meme', {method: 'GET', headers: { imageURL }});
-
-    console.log(request);
-
-    //how do i request
-
-};
-
-renderSearch('funny');
-
-imagesEL.forEach(imageEL => {
-    imageEL.addEventListener('click', createMeme);
-});
+document
+    .querySelector('#searchForm')
+    .addEventListener('submit', renderSearch);
