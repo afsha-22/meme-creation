@@ -6,22 +6,16 @@ class Like extends Model {}
 Like.init(
   {
     id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV1,
+      type: DataTypes.INTEGER,
       primaryKey: true,
+      autoIncrement: true
     },
-
-    post_likes: {
-      type: DataTypes.STRING,
+    user_id: {
+      type: DataTypes.INTEGER
     },
-
     post_id: {
-      type: DataTypes.UUID,
-      references: {
-        model: "post",
-        key: "id",
-      },
-    },
+      type: DataTypes.INTEGER,
+    }
   },
   {
     sequelize,

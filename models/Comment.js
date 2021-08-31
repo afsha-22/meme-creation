@@ -6,30 +6,20 @@ class Comment extends Model {}
 Comment.init(
   {
     id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV1,
+      type: DataTypes.INTEGER,
       primaryKey: true,
+      autoIncrement: true
     },
-     comments: {
+    comment: {
       type: DataTypes.STRING,
-     },
-    
+    },
+    user_id: {
+      type: DataTypes.INTEGER
+    },
     post_id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV1,
-      references:{
-        model: 'post',
-        key: 'id',      
-        }
-      },
-     user_id:{
-      type: DataTypes.UUID,
-      references:{
-        model: 'user',
-        key: 'id',      
-        }
-     } 
-},
+      type: DataTypes.INTEGER,
+    }  
+  },
   {
     sequelize,
     timestamps: false,
