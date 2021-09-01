@@ -10,7 +10,17 @@ const checkAutenticiation = require('../utils/checkAuthentication');
 
 //render home.handlebars
 router.get('/', async (req, res) => {
-    res.render('home');
+    //get all posts
+    const postsRaw = await Post.findAll({ include: [User, Comment] });
+
+    //TO DO - SORT BY MOST COMMENTED
+    const mostCommented = postsRaw.map(post => post.get({ plain: true }))
+
+   //TO DO - SORT BY MOST LIKED
+    const mostLiked = postsRaw.map(post => post.get({ plain: true }))
+
+
+    res.render('home', { mostCommented, mostLiked });
 });
 
 //render search-meme.handlebars
