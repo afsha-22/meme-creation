@@ -14,9 +14,9 @@ class User extends Model {
   User.init(
   {
     id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV1,
+      type: DataTypes.INTEGER,
       primaryKey: true,
+      autoIncrement: true,
     },
 
     userName: {
@@ -26,10 +26,10 @@ class User extends Model {
     
     email: {
       type : DataTypes.STRING,
-      isUnique :true,
+      unique:true,
       allowNull:false,
       validate:{
-          isEmail : true
+          isEmail : true,
        }
       },
       password: {

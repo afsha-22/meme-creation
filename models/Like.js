@@ -6,9 +6,9 @@ class Like extends Model {}
 Like.init(
   {
     id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV1,
+      type: DataTypes.INTEGER,
       primaryKey: true,
+      autoIncrement: true
     },
 
     post_likes: {
@@ -16,7 +16,7 @@ Like.init(
     },
 
     post_id: {
-      type: DataTypes.UUID,
+      type: DataTypes.INTEGER,
       references: {
         model: "post",
         key: "id",
