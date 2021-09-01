@@ -10,36 +10,41 @@
   </head>
 
 <header>
-<nav class="navbar navbar-expand-lg navbar-light bg-dark text-white">
-    <div class="container-fluid">
-        <div class="header">
-          <h1>Meme Creation</h1>
-        </div>
-        {{!-- <h1 class=".bg-light ">Meme Creation</h1> --}}
-        <div class="d-flex">
-            <div class="px-2 nav-item"><a href="" class="text-light">Home</a></div>
-            <div class="px-2 nav-item"><a href="" class="text-light">My Memes</a></div>
-            <div class="px-2 nav-item"><a href="" class="text-light">Create Memes</a></div>
-            <div class="px-2 nav-item" id="loginNav"><a href="" class="text-light">Settings</a></div>
-              {{!--login div --}}
-            <div class="px-2 nav-item" id="loginNav"><a href="" class="text-light" >
-            {{#if loggedIn}}
-              <a id="logout">Logout</a>
-              {{else}}
-              <a id = "login" href="/login">login</a>
-              {{/if}}
-            </div>
-    </div>
-</nav>
+          <nav class="navbar navbar-expand-lg navbar-light bg-dark text-white">
+              <div class="container-fluid">
+                  <div class="header">
+                    <h1>Meme Creation</h1>
+                  </div>
+                  {{!-- <h1 class=".bg-light ">Meme Creation</h1> --}}
+                  <div class="d-flex">
+                      <div class="px-2 nav-item"><a href="" class="text-light">Home</a></div>
+                      <div class="px-2 nav-item"><a href="" class="text-light">My Memes</a></div>
+                      <div class="px-2 nav-item"><a href="" class="text-light">Create Memes</a></div>
+                      <div class="px-2 nav-item" id="loginNav"><a href="" class="text-light">Settings</a></div>
+                        {{!--login div --}}
+                      <div class="px-2 nav-item" id="loginNav"><a href="" class="text-light" >
+                      {{#if loggedIn}}
+                        <a id="logout">Logout</a>
+                        {{else}}
+                        <a id = "login" href="/login">login</a>
+                        {{/if}}
+                      </div>
+              </div>
+          </nav>
 
 </header>
   <body>
+
     {{{ body }}}
-  {{>footer}}
-   
-    {{#if loggedIn}}
-        <script src="/js/logout.js"></script>
-    {{/if}}
+
+
+    {{>footer}}
+     
+     
+      {{!--if session i logged in this wil render the logout button on nav bar --}}
+          {{#if loggedIn}}
+              <script src="/js/logout.js"></script>
+          {{/if}}
 
    <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
