@@ -1,0 +1,36 @@
+<section class="container">
+    <p class="h3">Lets add some text!</p>
+
+    <div class="d-flex justify-content-center position-relative">
+        <img id="memeImage" class="" src="{{selectedImageURL}}">
+        <p class="bottom-0 position-absolute text-center w-100 text-white" id="displayCaption"></p>
+    </div>      
+
+    <form id="postMemeForm">
+        <div class="mb-3">
+            <label for="caption" class="form-label">Please provide your caption</label>
+            <input type="text" class="form-control" id="caption">
+        </div>
+
+        <div>
+        <span>Where would you like your caption postioned ? </span>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input text-position" type="radio" name="inlineRadioOptions" id="top" value="top">
+                <label class="form-check-label" for="top">Top</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input text-position" type="radio" name="inlineRadioOptions" id="middle" value="Middle">
+                <label class="form-check-label" for="Middle">Middle</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input text-position" type="radio" name="inlineRadioOptions" id="bottom" value="Bottom" checked>
+                <label class="form-check-label" for="Bottom">Bottom</label>
+            </div>
+        </div>
+     
+        <button type="submit" class="btn btn-primary">Create Post</button>
+    </form>
+
+</section>
+<script src="../js/render-text.js"></script>
+<script src="../js/create-post.js"></script>
