@@ -11,14 +11,29 @@ const checkAutenticiation = require('../utils/checkAuthentication');
 //render home.handlebars
 router.get('/', async (req, res) => {
 
-    //get all posts
-    const postsRaw = await Post.findAll({ include: [User, Comment] });
+    //SORT BY MOST COMMENTED
+    const mostCommentedRaw = await Post.findAll(
+      { 
+          include: [Comment, User],
+          order: [sequelize.literal('like_count DESC')],
+          limit: 4
+      }
+    );
+    
+    const mostCommented = mostCommentedRaw.map(post => post.get({ plain: true }))
 
-    //TO DO - SORT BY MOST COMMENTED
-    const mostCommented = postsRaw.map(post => post.get({ plain: true }))
+    //SORT BY MOST LIKED
+    const mostLikedRaw = await Post.findAll(
+      { 
+        include: [Comment, User],
+        order: [sequelize.literal('comment_count DESC')],
+        limit: 4
+      }
+    );
 
-   //TO DO - SORT BY MOST LIKED
-    const mostLiked = postsRaw.map(post => post.get({ plain: true }))
+    const mostLiked = mostLikedRaw.map(post => post.get({ plain: true }))
+
+    //render home with most liked and commented posts
 
     res.render('home', { mostCommented, mostLiked, loggedIn: req.session.loggedIn });
 

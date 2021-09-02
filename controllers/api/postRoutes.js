@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const { Post } = require('../../models');
+const { Post, User, Comment } = require('../../models');
+const sequelize = require('../../config/connection');
 
 // api/post
 
@@ -7,7 +8,13 @@ const { Post } = require('../../models');
 router.get('/', async (req, res) => {
     try {
 
-        const posts = await Post.findAll();
+        const posts = await Post.findAll(
+            { 
+                include: [Comment, User],
+                order: [sequelize.literal('like_count DESC')],
+            }
+        );
+        
         res.status(200).json(posts);
 
     }
