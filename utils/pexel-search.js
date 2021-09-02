@@ -11,15 +11,15 @@ const getImages = async (query) => {
 
     const request = await client.photos.search({query});
 
-    // const photos = [];
-
-    // request.photos.forEach(photo => {
-    //     photos.push(photo);
-    // });
-
     return request.photos;
  
 };
 
-module.exports = getImages;
 
+//returns one photo
+const getOneImage = async (imageID) => {
+    const request = await client.photos.show({ id: imageID });
+    return request;
+ }
+
+module.exports = { getOneImage, getImages };

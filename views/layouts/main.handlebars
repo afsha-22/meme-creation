@@ -21,33 +21,32 @@
         </div>
         {{!-- <h1 class=".bg-light ">Meme Creation</h1> --}}
         <div class="d-flex">
-            <div class="px-2 nav-item"><a href="" class="text-light">Home</a></div>
+            <div class="px-2 nav-item"><a href="/" class="text-light">Home</a></div>
             <div class="px-2 nav-item"><a href="" class="text-light">My Memes</a></div>
-            <div class="px-2 nav-item"><a href="" class="text-light">Create Memes</a></div>
+            <div class="px-2 nav-item"><a href="/search-meme" class="text-light">Create Memes</a></div>
             <div class="px-2 nav-item"><a href="" class="text-light">Settings</a></div>
 
               {{!--login div --}}
-                      <div class="px-2 nav-item" id="loginNav"><a href="" class="text-light" >
-                      {{#if loggedIn}}
-                        <a id="logout">Logout</a>
-                        {{else}}
-                        <a id = "login" href="/login">login</a>
-                        {{/if}}
-                      </div>
-
-            <div class="px-2 nav-item"><a href="" class="text-light">Logout</a></div>
+              <div class="px-2 nav-item" id="loginNav"><a href="" class="text-light" >
+                {{#if loggedIn}}
+                  <a href="" id="logout">Logout</a>
+                {{else}}
+                  <a href="/login" id = "login" href="/login">login</a>
+                {{/if}}
+              </div>
         </div>
     </div>
 </nav>
-    {{{body}}}
-    <footer>Copyright &copy; 2021 By MEME team</footer>
+
+  {{{body}}}
+
+  <footer>Copyright &copy; 2021 By MEME team</footer>
 
 {{!--if session i logged in this wil render the logout button on nav bar --}}
-          {{#if loggedIn}}
-              <script src="/js/logout.js"></script>
-          {{/if}}
-
+  {{#if loggedIn}}
+      <script src="/js/logout.js"></script>
+  {{/if}}
   <script src="/js/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
   </body>
 </html>
