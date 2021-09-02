@@ -2,7 +2,7 @@ const createPost = async (event) => {
     event.preventDefault();
 
     const radioEL = document.querySelectorAll(".form-check-input");
-    const captionEL = document.querySelector("#caption");
+    const captionEL = document.querySelector("#displayCaption");
     const imageEL = document.querySelector("#memeImage");
 
     let selectedPostion;
@@ -13,7 +13,7 @@ const createPost = async (event) => {
         };
     });
 
-    const caption = captionEL.value.trim();
+    const caption = captionEL.textContent.trim();
 
     const imageURL = imageEL.getAttribute('src');
 
@@ -22,6 +22,8 @@ const createPost = async (event) => {
         image_url: imageURL,
         image_position: selectedPostion
     };
+
+    console.log(requestBody);
  
     if (caption && imageURL && selectedPostion) {
         const response = await fetch(`/api/post`, {
