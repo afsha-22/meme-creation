@@ -1,17 +1,19 @@
 // Sign up form handler
-async function signupFormHandler(event) {
+async function resetPasswordform(event) {
     event.preventDefault();
+    console.log("test");
+
     // get the information from the sign up form
     const userName = document.querySelector('#username-signup').value.trim();
     const email = document.querySelector('#email-signup').value.trim();
-    const password = document.querySelector('#password-signup').value.trim();
+    const password = document.querySelector('#New-password" ').value.trim();
 
     // if all three fields have content
     if (userName && email && password) {
       //  console.log(userName, email, password);
         // POST the new user to the user table in the database
-        const response = await fetch('/api/user', {
-            method: 'post',
+        const response = await fetch('/api/user/resetPW', {
+            method: 'PUT',
             body: JSON.stringify({
                 userName,
                 email,
@@ -22,14 +24,14 @@ async function signupFormHandler(event) {
         });
         // when the fetch promise is fufilled, check the response status and convey the results
         if (response.ok) {
-            alert('Account created! Logging you in now.');
-            document.location.replace('/');
+            alert('password Reset');
+            document.location.replace('/login');
         } else {
-            alert(response.statusText, "user not created" )
+            alert(response.statusText, "Password did not match the requirement" )
         }
     }
 }
 
 document
-.querySelector('.signup-form')
-.addEventListener('submit', signupFormHandler);
+.querySelector('.resetPassword')
+.addEventListener('submit', resetPasswordform);
