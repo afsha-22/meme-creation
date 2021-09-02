@@ -10,18 +10,20 @@ Like.init(
       primaryKey: true,
       autoIncrement: true
     },
-
-    post_likes: {
-      type: DataTypes.STRING,
+    user_id: {
+      type: DataTypes.INTEGER
     },
-
     post_id: {
       type: DataTypes.INTEGER,
+
       references: {
         model: "post",
         key: "id",
       },
     },
+
+    }
+
   },
   {
     sequelize,

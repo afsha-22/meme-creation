@@ -1,3 +1,4 @@
+
 {{!-- Home routes "/" --}}
 
 
@@ -11,4 +12,23 @@
 
 
 
+<section class="container">
+  <h2>Trending</h2>
+  <div class="row justify-content-between">
+    {{#each mostCommented}}
+      {{> image-card this}}
+        {{else}}
+        <h3 class="empty">Whoops no content! Add some posts.</h3>
+    {{/each}}
+  </div>
+
+  <h2 class="my-4">Most Liked</h2>
+  <div class="row justify-content-between">
+    {{#each mostLiked}}
+      {{> image-card this}}
+        {{else}}
+        <h3 class="empty">Whoops no content! Add some posts.</h3>
+    {{/each}}
+  </div>
+</section>
 

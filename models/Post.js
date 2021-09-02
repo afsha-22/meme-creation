@@ -10,23 +10,25 @@ Post.init(
       primaryKey: true,
       autoIncrement: true
     },
-    imageCaption: {
+    image_caption: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-
     user_id: {
       type: DataTypes.INTEGER,
-      references:{
-        model: 'user',
-        key: 'id',      
+        references:{
+          model: 'user',
+          key: 'id',      
+        },
       },
-      
-    },
     image_url: {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    image_position: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    }
   },
   {
     sequelize,
