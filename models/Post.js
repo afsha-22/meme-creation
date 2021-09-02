@@ -32,13 +32,7 @@ Post.init(
     image_position: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    like_count: {
-      type: DataTypes.INTEGER,
-    },
-    comment_count: {
-      type: DataTypes.INTEGER,
-    },    
+    }
   },
   {
     sequelize,

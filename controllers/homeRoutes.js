@@ -1,6 +1,6 @@
 //packages requrired
 const router = require('express').Router();
-const { Post, User, Comment } = require('../models')
+const { Post, User, Comment, Like } = require('../models')
 const sequelize = require('../config/connection');
 const  { getOneImage, getImages } = require('../utils/pexel-search');
 
@@ -11,27 +11,18 @@ const checkAutenticiation = require('../utils/checkAuthentication');
 //render home.handlebars
 router.get('/', async (req, res) => {
 
+    //get all posts
+    const postsRaw = await Post.findAll({ include: [Comment, User, Like] });
+
     //SORT BY MOST COMMENTED
-    const mostCommentedRaw = await Post.findAll(
-      { 
-          include: [Comment, User],
-          order: [sequelize.literal('like_count DESC')],
-          limit: 4
-      }
-    );
-    
-    const mostCommented = mostCommentedRaw.map(post => post.get({ plain: true }))
+    const mostCommentedRaw =  postsRaw.sort((a, b) => (a.comments.length < b.comments.length) ? 1 : -1);
+    const mostCommentedAll = mostCommentedRaw.map(post => post.get({ plain: true }));
+    const mostCommented = mostCommentedAll.slice(0, 4);
 
     //SORT BY MOST LIKED
-    const mostLikedRaw = await Post.findAll(
-      { 
-        include: [Comment, User],
-        order: [sequelize.literal('comment_count DESC')],
-        limit: 4
-      }
-    );
-
-    const mostLiked = mostLikedRaw.map(post => post.get({ plain: true }))
+    const mostLikedRaw =  postsRaw.sort((a, b) => (a.likes.length < b.likes.length) ? 1 : -1);
+    const mostLikedAll = mostLikedRaw.map(post => post.get({ plain: true }))
+    const mostLiked = mostLikedAll.slice(0, 4);
 
     //render home with most liked and commented posts
 

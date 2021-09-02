@@ -18,5 +18,15 @@
         "comment": "Great stuff, you are an inspiration",
         "user_id": 2,
         "post_id": 1
+    },
+    {
+        "comment": "HEYYYYYY",
+        "user_id": 1,
+        "post_id": 2
+    },
+    {
+        "comment": "wOWWWW",
+        "user_id": 1,
+        "post_id": 2
     }
 ]

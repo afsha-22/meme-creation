@@ -82,7 +82,7 @@ router.post("/login", (req, res) => {
     // otherwise, save the session, and return the user object and a success message
     req.session.save(() => {
       // declare session variables
-      req.session.id = dbUserData.id;
+      req.session.userID = dbUserData.id;
       req.session.userName = dbUserData.userName;
       req.session.loggedIn = true;
 
