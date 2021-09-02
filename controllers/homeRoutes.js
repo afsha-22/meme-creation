@@ -26,13 +26,13 @@ router.get('/', async (req, res) => {
 
 //render search-meme.handlebars
 
-router.get('/search-meme', async (req, res) => {
+router.get('/search-meme', checkAutenticiation,  async (req, res) => {
     const userName = req.session.userName;
     const images = await getImages('funny&per_page=12');
     res.render('search-meme', { images, userName });
 });
 
-router.get('/create-meme/:photoID', async (req, res) => {
+router.get('/create-meme/:photoID', checkAutenticiation, async (req, res) => {
     const { photoID } = req.params;
 
     const selectedImageURL = `https://images.pexels.com/photos/${photoID}/pexels-photo-${photoID}.jpeg?auto=compress&cs=tinysrgb&h=350`
