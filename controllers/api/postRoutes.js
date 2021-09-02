@@ -21,14 +21,15 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     try {
 
-        const { imageCaption, image_url, image_position } = req.body;
+        const { image_caption, image_position, image_url_tiny, image_url_medium } = req.body;
 
         const userID = req.session.user_id;
 
         const request = {
-            image_caption: imageCaption,
+            image_caption: image_caption,
             user_id: userID,
-            image_url: image_url,
+            image_url_tiny: image_url_tiny,
+            image_url_medium: image_url_medium,
             image_position: image_position
         };
 

@@ -2,7 +2,7 @@ const createPost = async (event) => {
     event.preventDefault();
 
     const radioEL = document.querySelectorAll(".form-check-input");
-    const captionEL = document.querySelector("#caption");
+    const captionEL = document.querySelector("#displayCaption");
     const imageEL = document.querySelector("#memeImage");
 
     let selectedPostion;
@@ -13,17 +13,19 @@ const createPost = async (event) => {
         };
     });
 
-    const caption = captionEL.value.trim();
+    const caption = captionEL.textContent.trim();
 
-    const imageURL = imageEL.getAttribute('src');
+    const imageTiny = imageEL.getAttribute('data-image-tiny');
+    const imageMedium = imageEL.getAttribute('data-image-medium');
 
     const requestBody = {
         image_caption: caption,
-        image_url: imageURL,
+        image_url_tiny: imageTiny,
+        image_url_medium: imageMedium,
         image_position: selectedPostion
     };
  
-    if (caption && imageURL && selectedPostion) {
+    if (caption && imageTiny && imageMedium && selectedPostion) {
         const response = await fetch(`/api/post`, {
             method: 'POST',
             body: JSON.stringify(requestBody),
