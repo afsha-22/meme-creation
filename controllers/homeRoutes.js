@@ -11,8 +11,6 @@ const checkAutenticiation = require('../utils/checkAuthentication');
 //render home.handlebars
 router.get('/', async (req, res) => {
 
-    res.render('home', { loggedIn: req.session.loggedIn });
-
     //get all posts
     const postsRaw = await Post.findAll({ include: [User, Comment] });
 
@@ -22,16 +20,16 @@ router.get('/', async (req, res) => {
    //TO DO - SORT BY MOST LIKED
     const mostLiked = postsRaw.map(post => post.get({ plain: true }))
 
-
-    res.render('home', { mostCommented, mostLiked });
+    res.render('home', { mostCommented, mostLiked, loggedIn: req.session.loggedIn });
 
 });
 
 //render search-meme.handlebars
 
 router.get('/search-meme', async (req, res) => {
+    const userName = req.session.userName;
     const images = await getImages('funny&per_page=12');
-    res.render('search-meme', { images });
+    res.render('search-meme', { images, userName });
 });
 
 router.get('/create-meme/:photoID', async (req, res) => {
