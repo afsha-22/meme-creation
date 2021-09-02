@@ -18,15 +18,26 @@ Comment.init(
     },
     post_id: {
       type: DataTypes.INTEGER,
-    }  
-  },
-  {
+
+      references:{
+        model: 'post',
+        key: 'id',      
+        }
+      },
+     user_id:{
+      type: DataTypes.INTEGER,
+      references:{
+        model: 'user',
+        key: 'id',      
+        }
+     } 
+},
+{
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
     modelName: 'comment',
-  }
-);
+});
 
 module.exports = Comment;

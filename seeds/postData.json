@@ -1,25 +1,29 @@
 [
     {
         "image_caption": "Here is the first post!",
-        "image_url": "https://images.pexels.com/photos/1183434/pexels-photo-1183434.jpeg?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=200&w=280",
+        "image_url_tiny": "https://images.pexels.com/photos/1183434/pexels-photo-1183434.jpeg?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=200&w=280",
+        "image_url_medium": "https://images.pexels.com/photos/1183434/pexels-photo-1183434.jpeg?auto=compress&cs=tinysrgb&h=350",
         "image_position": "bottom",
         "user_id": 1
     },
     {
         "image_caption": "Here is the second post!",
-        "image_url": "https://images.pexels.com/photos/1183434/pexels-photo-1183434.jpeg?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=200&w=280",
+        "image_url_tiny": "https://images.pexels.com/photos/1183434/pexels-photo-1183434.jpeg?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=200&w=280",
+        "image_url_medium": "https://images.pexels.com/photos/1183434/pexels-photo-1183434.jpeg?auto=compress&cs=tinysrgb&h=350",
         "image_position": "top",
         "user_id": 1
     },
     {
         "image_caption": "Here is the third post!",
-        "image_url": "https://images.pexels.com/photos/1183434/pexels-photo-1183434.jpeg?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=200&w=280",
+        "image_url_tiny": "https://images.pexels.com/photos/1183434/pexels-photo-1183434.jpeg?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=200&w=280",
+        "image_url_medium": "https://images.pexels.com/photos/1183434/pexels-photo-1183434.jpeg?auto=compress&cs=tinysrgb&h=350",
         "image_position": "middle",
         "user_id": 1
     },
     {
         "image_caption": "Here is the fourth post!",
-        "image_url": "https://images.pexels.com/photos/1183434/pexels-photo-1183434.jpeg?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=200&w=280",
+        "image_url_tiny": "https://images.pexels.com/photos/1183434/pexels-photo-1183434.jpeg?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=200&w=280",
+        "image_url_medium": "https://images.pexels.com/photos/1183434/pexels-photo-1183434.jpeg?auto=compress&cs=tinysrgb&h=350",
         "image_position": "bottom",
         "user_id": 1
     }
