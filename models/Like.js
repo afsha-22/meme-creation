@@ -20,10 +20,7 @@ Like.init(
         model: "post",
         key: "id",
       },
-    },
-
     }
-
   },
   {
     sequelize,

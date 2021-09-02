@@ -11,7 +11,7 @@ const checkAutenticiation = require('../utils/checkAuthentication');
 //render home.handlebars
 router.get('/', async (req, res) => {
 
-    res.render('home', { loggedIn: req.session.loggedIn });
+    // res.render('home', { loggedIn: req.session.loggedIn });
 
     //get all posts
     const postsRaw = await Post.findAll({ include: [User, Comment] });
@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
     const mostLiked = postsRaw.map(post => post.get({ plain: true }))
 
 
-    res.render('home', { mostCommented, mostLiked });
+    res.render('home', { mostCommented, mostLiked, loggedIn: req.session.loggedIn });
 
 });
 
