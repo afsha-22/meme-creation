@@ -2,7 +2,7 @@
 const router = require('express').Router();
 const { Post, User, Comment } = require('../models')
 const sequelize = require('../config/connection');
-const getImages = require('../utils/pexel-search');
+const  { getOneImage, getImages } = require('../utils/pexel-search');
 
 //authenication middleware
 //ensures user is logged in
@@ -32,12 +32,11 @@ router.get('/search-meme', checkAutenticiation,  async (req, res) => {
     res.render('search-meme', { images, userName });
 });
 
-router.get('/create-meme/:photoID', checkAutenticiation, async (req, res) => {
-    const { photoID } = req.params;
+router.get('/create-meme/:id', checkAutenticiation, async (req, res) => {
+    const { id } = req.params;
+    const image = await getOneImage(id);
 
-    const selectedImageURL = `https://images.pexels.com/photos/${photoID}/pexels-photo-${photoID}.jpeg?auto=compress&cs=tinysrgb&h=350`
-
-    res.render('create-meme', { selectedImageURL });
+    res.render('create-meme', { image });
 });
 
 /// Render the login page.  If the user is logged in, redirect to the home page.

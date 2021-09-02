@@ -21,7 +21,11 @@ Post.init(
           key: 'id',      
         },
       },
-    image_url: {
+    image_url_tiny: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    image_url_medium: {
       type: DataTypes.STRING,
       allowNull: false,
     },

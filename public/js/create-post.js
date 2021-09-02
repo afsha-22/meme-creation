@@ -15,17 +15,17 @@ const createPost = async (event) => {
 
     const caption = captionEL.textContent.trim();
 
-    const imageURL = imageEL.getAttribute('src');
+    const imageTiny = imageEL.getAttribute('data-image-tiny');
+    const imageMedium = imageEL.getAttribute('data-image-medium');
 
     const requestBody = {
         image_caption: caption,
-        image_url: imageURL,
+        image_url_tiny: imageTiny,
+        image_url_medium: imageMedium,
         image_position: selectedPostion
     };
-
-    console.log(requestBody);
  
-    if (caption && imageURL && selectedPostion) {
+    if (caption && imageTiny && imageMedium && selectedPostion) {
         const response = await fetch(`/api/post`, {
             method: 'POST',
             body: JSON.stringify(requestBody),
