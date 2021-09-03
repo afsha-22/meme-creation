@@ -5,25 +5,16 @@
                 <img src="{{this.image_url_tiny}}">
                 <p class="{{textPositionClass this.image_position}} position-absolute text-center w-100 text-white" id="displayCaption">{{this.image_caption}}</p>
             </div>
-            <div class="d-flex flex-row justify-content-between">
-
-         
+            <div class="d-flex flex-row justify-content-between my-2">
                 <a href="#"><i class="bi bi-hand-thumbs-up" style="font-size: 2rem; color: cornflowerblue;"></i></a>
-                    <div id="likeCount"></div>
-                    
-               <i class="bi bi-chat commentIconeBtn" id="comment-btn" style="font-size: 2rem; color: cornflowerblue;"></i>
-
-               <form id = "user-comment" class="hide-comment-post comment-div comment-form">
-                     <textarea id="comment-body" name="comment-body"></textarea>
-                   
-                    <button type="submit" class="btn commentSubmit">Post</button>
-                    </form>
-          {{!-- Comment Form--}}
-
-                
-                 </div>
-                 {{!-- Comment Form--}}
-             
+                <a href="#" class="add-comment"><i class="bi bi-chat" style="font-size: 2rem; color: cornflowerblue;"></i></a>
+            </div>
+            <form class="m-auto d-none commentForm" data-post-id="{{this.id}}">
+                <div class="mb-3">
+                    <textarea class="form-control my-3" id="comment" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Comment</button>
+            </form>
         </div>
     </div>
 </div>
