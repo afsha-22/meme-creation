@@ -11,15 +11,12 @@ Like.init(
       autoIncrement: true
     },
     user_id: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      allowNull: false
     },
     post_id: {
       type: DataTypes.INTEGER,
-
-      references: {
-        model: "post",
-        key: "id",
-      },
+      allowNull: false
     }
   },
   {
