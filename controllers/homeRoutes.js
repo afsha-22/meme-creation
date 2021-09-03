@@ -9,7 +9,7 @@ const  { getOneImage, getImages } = require('../utils/pexel-search');
 const checkAutenticiation = require('../utils/checkAuthentication');
 
 //render home.handlebars
-router.get('/', async (req, res) => {
+router.get('/', checkAutenticiation, async (req, res) => {
 
     //get all posts
     const postsRaw = await Post.findAll({ include: [Comment, User, Like] });
@@ -27,6 +27,24 @@ router.get('/', async (req, res) => {
     //render home with most liked and commented posts
 
     res.render('home', { mostCommented, mostLiked, loggedIn: req.session.loggedIn });
+
+});
+
+//render profile.handlebars
+router.get('/profile', checkAutenticiation, async (req, res) => {
+
+  //get all posts for user logged in
+  const postsRaw = await Post.findAll(
+    {
+       where: { user_id: req.session.userID }, 
+       include: [Comment, User, Like] 
+    }
+  );
+  const posts = postsRaw.map(post => post.get({ plain: true }));
+
+  //render users profile with all posts
+
+  res.render('profile', { posts, loggedIn: req.session.loggedIn });
 
 });
 
