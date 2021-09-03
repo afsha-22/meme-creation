@@ -6,9 +6,24 @@
                 <p class="{{textPositionClass this.image_position}} position-absolute text-center w-100 text-white" id="displayCaption">{{this.image_caption}}</p>
             </div>
             <div class="d-flex flex-row justify-content-between">
+
+         
                 <a href="#"><i class="bi bi-hand-thumbs-up" style="font-size: 2rem; color: cornflowerblue;"></i></a>
-                <a href="#"><i class="bi bi-chat" style="font-size: 2rem; color: cornflowerblue;"></i></a>
-            </div>
+                    <div id="likeCount"></div>
+                    
+               <i class="bi bi-chat commentIconeBtn" id="comment-btn" style="font-size: 2rem; color: cornflowerblue;"></i>
+
+               <form id = "user-comment" class="hide-comment-post comment-div comment-form">
+                     <textarea id="comment-body" name="comment-body"></textarea>
+                   
+                    <button type="submit" class="btn commentSubmit">Post</button>
+                    </form>
+          {{!-- Comment Form--}}
+
+                
+                 </div>
+                 {{!-- Comment Form--}}
+             
         </div>
     </div>
 </div>
