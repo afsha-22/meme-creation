@@ -1,0 +1,11 @@
+<section class="container">
+  <h2>Your Posts!</h2>
+  <div class="row justify-content-between">
+    {{#each posts}}
+      {{> image-card this}}
+        {{else}}
+        <h3 class="empty">Whoops no content! Add some posts.</h3>
+    {{/each}}
+  </div>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/create-comment.js"></script>

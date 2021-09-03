@@ -1,6 +1,6 @@
 //packages requrired
 const router = require('express').Router();
-const { Post, User, Comment } = require('../models')
+const { Post, User, Comment, Like } = require('../models')
 const sequelize = require('../config/connection');
 const  { getOneImage, getImages } = require('../utils/pexel-search');
 
@@ -9,18 +9,42 @@ const  { getOneImage, getImages } = require('../utils/pexel-search');
 const checkAutenticiation = require('../utils/checkAuthentication');
 
 //render home.handlebars
-router.get('/', async (req, res) => {
+router.get('/', checkAutenticiation, async (req, res) => {
 
     //get all posts
-    const postsRaw = await Post.findAll({ include: [User, Comment] });
+    const postsRaw = await Post.findAll({ include: [Comment, User, Like] });
 
-    //TO DO - SORT BY MOST COMMENTED
-    const mostCommented = postsRaw.map(post => post.get({ plain: true }))
+    //SORT BY MOST COMMENTED
+    const mostCommentedRaw =  postsRaw.sort((a, b) => (a.comments.length < b.comments.length) ? 1 : -1);
+    const mostCommentedAll = mostCommentedRaw.map(post => post.get({ plain: true }));
+    const mostCommented = mostCommentedAll.slice(0, 4);
 
-   //TO DO - SORT BY MOST LIKED
-    const mostLiked = postsRaw.map(post => post.get({ plain: true }))
+    //SORT BY MOST LIKED
+    const mostLikedRaw =  postsRaw.sort((a, b) => (a.likes.length < b.likes.length) ? 1 : -1);
+    const mostLikedAll = mostLikedRaw.map(post => post.get({ plain: true }))
+    const mostLiked = mostLikedAll.slice(0, 4);
+
+    //render home with most liked and commented posts
 
     res.render('home', { mostCommented, mostLiked, loggedIn: req.session.loggedIn });
+
+});
+
+//render profile.handlebars
+router.get('/profile', checkAutenticiation, async (req, res) => {
+
+  //get all posts for user logged in
+  const postsRaw = await Post.findAll(
+    {
+       where: { user_id: req.session.userID }, 
+       include: [Comment, User, Like] 
+    }
+  );
+  const posts = postsRaw.map(post => post.get({ plain: true }));
+
+  //render users profile with all posts
+
+  res.render('profile', { posts, loggedIn: req.session.loggedIn });
 
 });
 
