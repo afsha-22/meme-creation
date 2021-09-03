@@ -1,3 +1,19 @@
 .w-max-content {
     width: max-content;
 }
+
+#userComment
+{
+    display: flex;
+    margin-left: 0;
+    width: 70%;
+
+}
+.hide-comment-post
+{
+    display: none !important;
+}
+.show-comment-post
+{
+    visibility: visible !important;
+}

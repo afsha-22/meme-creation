@@ -88,4 +88,13 @@ router.get('/resetPW', (req, res) => {
   res.render('resetPw');
 });
 
+
+router.get('/comment', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+  res.render('comment');
+});
+
 module.exports = router;
