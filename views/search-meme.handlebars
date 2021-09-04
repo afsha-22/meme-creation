@@ -1,9 +1,9 @@
 <section class="container">
-<p class="h3">Hi {{userName}}! Let's get to work and laugh, at the same time!</p>
+<p class="h3 my-4 mt-2 bg-light mx-auto px-2">Hi {{userName}}! Let's get to work and laugh, at the same time!</p>
 <form id="searchForm" class="row g-3">
     <div class="col-auto">
         <label for="search" class="visually-hidden">Search</label>
-        <input type="text" class="form-control" id="search" placeholder="cats">
+        <input type="text" class="form-control" id="search" placeholder="Search text e.g. Cats">
     </div>
     <div class="col-auto">
         <button type="submit" class="btn btn-primary mb-3">Search</button>
@@ -12,7 +12,7 @@
 
 <div class="row my-3">
     {{#each images}}
-        <div class="col-3">
+        <div class="col p-2 py-3">
             <a href="/create-meme/{{this.id}}" class="image-search">
                 <img src="{{this.src.tiny}}" alt="meme image" />
             </a>

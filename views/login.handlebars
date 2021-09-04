@@ -1,21 +1,21 @@
-<form class="login-form">
+<form class="login-form  my-5 mx-auto p-5">
+ 
   <div>
     <label for="email-login">Email:</label>
-    <input type="text" id="email-login" />
+    <input type="text" class = "rounded" id="email-login" placeholder="Enter your email address">
   </div>
   <div>
     <label for="password-login">Password:</label>
-    <input type="password" id="password-login" />
+    <input type="password" class = "rounded" id="password-login" placeholder="Enter your password">
   </div>
   <div>
     <button type="submit">Login</button>
   </div>
-</form>
-<div id="signupMessage"></div>
-
-
-<div id ="pageLink">
+  <div id ="pageLink" class = "mx-auto d-flex justify-content-evenly mt-4">
 <a href="/signup">Sign up?</a>
 <a href="/resetPassword">Password Reset?</a>
 </div>
+</form>
+<div id="signupMessage"></div>
+
 <script src="/js/login.js"></script>
