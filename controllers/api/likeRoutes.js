@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
 
         const { post_id } = req.body;
 
-        const userID = req.session.userID;
+        const userID = req.session.user_id;
 
         const request = {
             user_id: userID,

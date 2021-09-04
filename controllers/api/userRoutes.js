@@ -38,12 +38,11 @@ router.post("/", (req, res) => {
   })
     // send the user data back to the client as confirmation and save the session
     .then((dbUserData) => {
-        req.session.save(() => {
+      req.session.save(() => {
         req.session.id = dbUserData.id;
         req.session.userName = dbUserData.userName;
         req.session.loggedIn = true;
 
-        
         res.json(dbUserData);
       });
     })
@@ -58,8 +57,6 @@ router.post("/", (req, res) => {
 router.post("/login", (req, res) => {
   // findOne method by email to look for an existing user in the database with the email address entered
   // expects {email: 'lernantino@gmail.com', password: 'password1234'}
-  console.log(req.body);
-
   User.findOne({
     where: {
       email: req.body.email,
@@ -106,48 +103,35 @@ router.post("/logout", (req, res) => {
 });
 
 //password reset - api/user/paswordReset
-/*
-router.put('/resetPW', (req, res) => {
 
-
+router.put("/passwordreset", (req, res) => {
   User.findOne({
     where: {
-    email: req.body.email,
-    userName: req.body.userName
-    }
-}).then(dbUserData => {
-     // if the email or username is not found, return an error
-    if (!dbUserData) {
-    res.status(401).json({ message: 'user not found' });
-    return;
-    }
-
+      email: req.body.email,
+    },
   })
-   //**************  */
-/*User.update({
-    password: req.body.password
- 
-  })
-    // send the user data back to the client as confirmation and save the session
-    .then(dbUserData => {
-    //  console.log(dbUserData);
-      // req.session.save(() => {
-      //   req.session.id = dbUserData.id;
-      //   req.session.userName = dbUserData.userName;
-      // //  req.session.loggedIn = true;
-    
-      res.status(200).json({ message: 'password reset!!' });
-      })
-   
-    // if there is a server error, return that error
-    .catch(err => {
+    .then((dbUserData) => {
+      // if the email or username is not found, return an error
+      if (!dbUserData) {
+        res.status(401).json({ message: "user not found" });
+        return;
+      }
+      // Otherwise, verify the user.
+      // call the instance method as defined in the User model
+       dbUserData.password=req.body.password;
+       return dbUserData.save();
+        
+    }).then(user => {
+      res.status(200).json({ message: "password reset!!" });
+    })
+    .catch((err) => {
       console.log(err);
       res.status(400).json(err);
     });
-})
 
-
-*/
+  // send the user data back to the client as confirmation and save the session
+});
+// if there is a server error, return that error
 
 /* PUT /api/users/1 -- update an existing user
 router.put('/:id', withAuth, (req, res) => {
