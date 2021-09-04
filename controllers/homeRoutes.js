@@ -83,9 +83,9 @@ router.get('/signup', (req, res) => {
   res.render('signup');
 });
 
-router.get('/resetPW', (req, res) => {
+router.get('/resetpassword', (req, res) => {
 
-  res.render('resetPw');
+  res.render('resetPW');
 });
 
 
