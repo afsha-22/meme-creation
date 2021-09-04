@@ -17,3 +17,20 @@
 {
     visibility: visible !important;
 }
+
+h2 {
+    width: 100% !important;
+}
+
+* {
+    font-family: 'ZCOOL KuaiLe', cursive !important;
+}
+
+.card-body {
+    background-color: #e0d5b9!important;
+    border:2px;
+}
+
+.card-body:hover{
+    opacity:0.5;
+}
