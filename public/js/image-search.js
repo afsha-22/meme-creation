@@ -29,8 +29,6 @@ const renderSearch = async (event) => {
 
     const images = await (getImages(searchQuery));
 
-    console.log(images);
-
     imagesEL.forEach((imageEL, index) => {
         imageEL.setAttribute('href', `/create-meme/${images[index].id}`);
         imageEL.firstElementChild.setAttribute('src', images[index].src.tiny);
