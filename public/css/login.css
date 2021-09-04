@@ -16,9 +16,16 @@
     
   
   }
-  #pageLink
+  .loginMessage
+  {
+    text-align: center;
+    margin-top: 20px;
+    color: tomato;
+  }
+  #pageLink 
   {
     margin-left: 40%;
+    margin-top: 20px;
   }
   
   a {

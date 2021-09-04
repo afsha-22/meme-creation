@@ -1,17 +1,15 @@
-
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
 
-//bcrypt paasword 
+//bcrypt paasword
 class User extends Model {
-      checkPassword(loginPw)
-      {
-        return bcrypt.compareSync(loginPw, this.password);
-      }
-   }
+  checkPassword(loginPw) {
+    return bcrypt.compareSync(loginPw, this.password);
+  }
+}
 
-  User.init(
+User.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -23,23 +21,29 @@ class User extends Model {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    
+
     email: {
-      type : DataTypes.STRING,
-      unique:true,
-      allowNull:false,
-      validate:{
-          isEmail : true,
-       }
+      type: DataTypes.STRING,
+      unique: true,
+      allowNull: false,
+      validate: {
+        isEmail: true,
+        notNull: {
+          msg: "Please enter your Email",
+        },
       },
-      password: {
-        type: DataTypes.STRING,
-        allowNull:false,
-        validate:{
-          len: [8],
-        }
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [8],
+        notNull: {
+          msg: "Please enter your password",
+        },
       },
-},
+    },
+  },
   {
     hooks: {
       beforeCreate: async (newUserData) => {
@@ -47,16 +51,18 @@ class User extends Model {
         return newUserData;
       },
       beforeUpdate: async (updatedUserData) => {
-        updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+        updatedUserData.password = await bcrypt.hash(
+          updatedUserData.password,
+          10
+        );
         return updatedUserData;
       },
-      
-    }, 
+    },
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'user',
+    modelName: "user",
   }
 );
 module.exports = User;

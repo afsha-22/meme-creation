@@ -27,6 +27,9 @@ async function resetPasswordform(event) {
             alert('password Reset');
             document.location.replace('/login');
         } else {
+            //PasswordResetMSG
+           // document.querySelector('#PasswordResetMSG').innerHTML = response.statusText ,  "Password did not match the requirement" ;
+
             alert(response.statusText, "Password did not match the requirement" )
         }
     }

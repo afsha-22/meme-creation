@@ -12,7 +12,8 @@ async function logout(e) {
       console.log("routs to home page");
       document.location.replace('/');
     } else {
-      alert(response.statusText);
+  
+      document.body.innerHTML = response.statusText;
 
     }
   }
