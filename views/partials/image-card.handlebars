@@ -1,10 +1,12 @@
 <div class="col col-md-6 col-xl-3 my-3">
     <div class="card m-auto w-max-content">
         <div class="card-body">
-            <div class="d-flex justify-content-center position-relative">
-                <img src="{{this.image_url_tiny}}">
-                <p class="{{textPositionClass this.image_position}} position-absolute text-center w-100 text-white" id="displayCaption">{{this.image_caption}}</p>
-            </div>
+            <a href="/meme/{{this.id}}">
+                <div class="d-flex justify-content-center position-relative">
+                    <img src="{{this.image_url_tiny}}">
+                    <p class="{{textPositionClass this.image_position}} position-absolute text-center w-100 text-white" id="displayCaption">{{this.image_caption}}</p>
+                </div>
+            </a>
             <div class="d-flex flex-row justify-content-between my-2">
                 <a href="#" clas=""><i class="add-like bi bi-hand-thumbs-up" data-post-id="{{this.id}}" style="font-size: 2rem; color: cornflowerblue;"></i></a>
                 <a href="#" class="add-comment"><i class="bi bi-chat" style="font-size: 2rem; color: cornflowerblue;"></i></a>
