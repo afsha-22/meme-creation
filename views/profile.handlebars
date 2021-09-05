@@ -1,10 +1,10 @@
 <section class="container">
-  <h2 class ="my-4 mt-2 bg-light mx-auto px-2">Your Posts!</h2>
-  <div class="row justify-content-between">
+  <h2 class ="my-4 mt-2 text-white mx-auto px-2">Your Posts!</h2>
+  <div class="row justify-content-around text-white mx-auto">
     {{#each posts}}
       {{> image-card this}}
         {{else}}
-        <h3 class="empty my-4 mt-2 bg-light mx-auto px-2">Whoops no content! Add some posts.</h3>
+        <h3 class="empty my-4 mt-2 mx-auto px-2 text-white">Whoops no content! Add some posts.</h3>
     {{/each}}
   </div>
 <script src="/js/jquery.min.js"></script>
