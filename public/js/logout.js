@@ -9,8 +9,7 @@ async function logout(e) {
     });
   
     if (response.ok) {
-      console.log("routs to home page");
-      document.location.replace('/');
+           document.location.replace('/');
     } else {
       alert(response.statusText);
 

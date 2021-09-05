@@ -53,8 +53,27 @@ max-width: 500px;
       color: #4c584a;
   }
 
+  .errMessage
+  {
+    color: tomato;
+    text-align: center;
+    size: 20px;
+  }
+  
+  button {
+    background-color: #4c584a;
+    border: 0;
+    padding: 1%;
+    color:white;
+    font-weight: bold;
+    transition: background-color .1s;
+    cursor: pointer;
+    border-radius: 4px;
+
+
   a:hover{
     color: #4c584a;
+
   }
   
 
