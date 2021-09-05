@@ -2,6 +2,10 @@
     width: max-content;
 }
 
+.h-max-content {
+    height: 100%;
+}
+
 #userComment
 {
     display: flex;
@@ -17,3 +21,47 @@
 {
     visibility: visible !important;
 }
+
+h2 {
+    width: 100% !important;
+}
+
+* {
+    font-family: 'ZCOOL KuaiLe', cursive !important;
+}
+
+.card-body {
+    background-color: #e0d5b9!important;
+    border:2px;
+    opacity: 0.5;
+}
+
+.card-body:hover{
+    opacity:1;
+}
+
+button {
+    background-color: #65563f;
+    border: 0;
+    padding: 1%;
+    color:white;
+    font-weight: bold;
+    transition: background-color .1s;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+
+button:hover{
+    background-color: #4c584a!important ;
+}
+
+.bi-hand-thumbs-up-fill::before,.bi-hand-thumbs-up::before,.bi-chat-text-fill::before {
+color: #4c584a!important;
+}
+
+.form-check-input:checked[type=radio]{
+    background-color: #4c584a!important;
+    border-color:#4c584a!important;
+}
+
+

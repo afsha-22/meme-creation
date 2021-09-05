@@ -29,8 +29,6 @@ const renderSearch = async (event) => {
 
     const images = await (getImages(searchQuery));
 
-    console.log(images);
-
     imagesEL.forEach((imageEL, index) => {
         imageEL.setAttribute('href', `/create-meme/${images[index].id}`);
         imageEL.firstElementChild.setAttribute('src', images[index].src.tiny);
@@ -41,29 +39,3 @@ const renderSearch = async (event) => {
 document
     .querySelector('#searchForm')
     .addEventListener('submit', renderSearch);
-
-// const createPost = (event) => {
-//     event.preventDefault();
-
-//     const selectedEL = event.target;
-
-//     const imageTiny = selectedEL.getAttribute('data-url-tiny');
-//     const imageMedium = selectedEL.getAttribute('data-url-medium');
-
-//     const body = {
-//         imageTiny,
-//         imageMedium
-//     };
-
-//     fetch(`/create-meme`, {
-//         method: 'GET',
-//         // body: JSON.stringify(body),
-//         headers: body
-//     });
-
-// };
-
-
-// document.querySelectorAll(".image-search").forEach(element => {
-//     element.addEventListener("click", createPost);
-// });

@@ -1,0 +1,27 @@
+<section class="container">
+
+    <div class="card m-auto w-max-content h-max-content">
+        <div class="card-header">Post by {{post.user.userName}}</div>
+        <div class="d-flex justify-content-center position-relative">
+            <img id="memeImage" class="" src="{{post.image_url_medium}}">
+            <p class="{{textPositionClass post.image_position}} position-absolute text-center w-100 text-white" id="displayCaption">{{post.image_caption}}</p>
+        </div>     
+        <div class="card-footer d-flex justify-content-between">
+            <small class="text-muted">{{likeCount}} likes</small>
+            <small class="text-muted">{{commentCount}} comments</small>
+        </div>    
+        <div class="h3 mx-auto my-auto">Comments</div>
+            <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                {{#each comments}}
+                <p>{{this.comment}}</p>
+                <footer class="blockquote-footer">Commented by <cite title="Source Title">{{this.user.userName}}</cite></footer>
+                {{/each}}
+            </blockquote>
+        </div> 
+    </div>
+
+</div>  
+
+</section>
+

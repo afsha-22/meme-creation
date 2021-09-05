@@ -48,6 +48,38 @@ router.get('/profile', checkAutenticiation, async (req, res) => {
 
 });
 
+//render meme.handlebars
+router.get('/meme/:id', checkAutenticiation, async (req, res) => {
+
+  const postID = req.params.id;
+
+  //get post where matching postID
+  const postRaw = await Post.findOne(
+    {
+       where: { id: postID }, 
+       include: [Comment, User, Like] 
+    }
+  );
+  const post = postRaw.get({ plain: true });
+
+    //get post where matching postID
+    const commentsRaw = await Comment.findAll(
+      {
+         where: { post_id: postID }, 
+         include: User 
+      }
+    );
+    const comments = commentsRaw.map(comment => comment.get({ plain: true }))
+
+  const likeCount = post.likes.length;
+  const commentCount = post.comments.length;
+
+  //render view-meme with indivual post
+
+  res.render('view-meme', { post, comments, likeCount, commentCount, loggedIn: req.session.loggedIn });
+
+});
+
 //render search-meme.handlebars
 
 router.get('/search-meme', checkAutenticiation,  async (req, res) => {

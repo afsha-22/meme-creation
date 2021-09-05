@@ -3,10 +3,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="../../assets/style.css" />
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
 
      <link rel="stylesheet" href="/css/login.css">
 
@@ -16,7 +18,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-dark text-white">
     <div class="container-fluid">
         <div class="header">
-          <img src="img/logo.png" alt="logo" />
+          {{!-- <img src="img/logo.png" alt="logo" /> --}}
           <h1>Meme Creation</h1>
         </div>
         {{!-- <h1 class=".bg-light ">Meme Creation</h1> --}}
@@ -31,7 +33,7 @@
                 {{#if loggedIn}}
                   <a href="" id="logout">Logout</a>
                 {{else}}
-                  <a href="/login" id = "login" href="/login">login</a>
+                  <a href="/login" id = "login" href="/login">Login</a>
                 {{/if}}
               </div>
         </div>
@@ -40,7 +42,7 @@
 
   {{{body}}}
 
-  <footer>Copyright &copy; 2021 By MEME team</footer>
+  <footer class = "bg-dark text-white fixed-bottom" style = "text-align:center;">Copyright &copy; 2021 By MEME TEAM....it rhymes #dadjokes</footer>
 
 {{!--if session i logged in this wil render the logout button on nav bar --}}
   {{#if loggedIn}}
