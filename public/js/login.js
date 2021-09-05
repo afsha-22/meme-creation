@@ -1,30 +1,36 @@
 const loginFormHandler = async (event) => {
-    event.preventDefault();
-  
-    // Collect values from the login form
-    const email = document.querySelector('#email-login').value.trim();
-    const password = document.querySelector('#password-login').value.trim();
-    
-  
-    if (email && password) {
-      // Send a POST request to the API endpoint
-      const response = await fetch('/api/user/login', {
-        method: 'POST',
-        body: JSON.stringify({ email, password }),
-        headers: { 'Content-Type': 'application/json' },
-      });
-  
-      if (response.ok) {
-        // If successful, redirect the browser to the dashboard page
-        document.location.replace('/');
-      } else {
-          ///*check
-        document.querySelector('#signupMessage').innerHTML = response.statusText;
-      }
-    }
-  };
+  event.preventDefault();
 
-  
+  // Collect values from the login form
+  const email = document.querySelector("#email-login").value.trim();
+  const password = document.querySelector("#password-login").value.trim();
+  const loginerrorMessage = document.querySelector(".errMessage");
+
+ 
+  if (email && password) {
+    // Send a POST request to the API endpoint
+    const response = await fetch("/api/user/login", {
+      method: "POST",
+      body: JSON.stringify({ email, password }),
+      headers: { "Content-Type": "application/json" },
+    })
+
+
+    
+    if (response.ok) {
+      // If successful, redirect the browser to the dashboard page
+      document.location.replace("/");
+    }
+    if(response.s) {
+    loginerrorMessage.innerHTML = response.statusText;
+    }
+  }
+  else{
+    loginerrorMessage.innerHTML = `please enter email and password`;
+    return;
+  }
+};
+
 document
-.querySelector('.login-form')
-.addEventListener('submit', loginFormHandler);
+  .querySelector(".login-form")
+  .addEventListener("submit", loginFormHandler);

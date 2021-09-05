@@ -51,6 +51,12 @@ max-width: 500px;
     #login, #logout, a:hover {
     color: #3486eb;
   }
+  .errMessage
+  {
+    color: tomato;
+    text-align: center;
+    size: 20px;
+  }
   
   button {
     background-color: #4c584a;

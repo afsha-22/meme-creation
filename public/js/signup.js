@@ -5,12 +5,14 @@ async function signupFormHandler(event) {
     const userName = document.querySelector('#username-signup').value.trim();
     const email = document.querySelector('#email-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
-
-    // if all three fields have content
+    const errorMessage = document.querySelector(".errMessage");
+    
+      // if all three fields have content
     if (userName && email && password) {
       //  console.log(userName, email, password);
         // POST the new user to the user table in the database
-        const response = await fetch('/api/user', {
+            
+        const response = await fetch('/api/user/signup', {
             method: 'post',
             body: JSON.stringify({
                 userName,
@@ -22,11 +24,19 @@ async function signupFormHandler(event) {
         });
         // when the fetch promise is fufilled, check the response status and convey the results
         if (response.ok) {
-            alert('Account created! Logging you in now.');
+          
             document.location.replace('/');
-        } else {
-            alert(response.statusText, "user not created" )
+        } 
+        if (response.status == 409 ||response.status == 400 || response.status == 401) {
+            
+            errorMessage.innerHTML= "unable to signup ";
         }
+        else{
+            errorMessage.innerHTML= "unable to signup ";
+        }
+    }
+    else {
+        errorMessage.innerHTML= "Email or password not valid";
     }
 }
 
