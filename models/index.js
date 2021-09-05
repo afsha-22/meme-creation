@@ -1,5 +1,5 @@
 // import models
-const User = require('./User');
+const User = require('./user');
 const Comment = require('./Comment');
 const Like = require('./Like');
 const Post = require('./Post');
@@ -46,8 +46,8 @@ Comment.belongsTo(User,{
 
 
 module.exports = {
-User,
-Comment,
-Post,
-Like
+  User,
+  Comment,
+  Post,
+  Like
 };

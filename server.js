@@ -1,6 +1,3 @@
-// require("dotenv").config();
-// const models = require("./models");
-
 const express = require("express");
 const app = express();
 const path = require("path");
