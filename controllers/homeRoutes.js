@@ -29,11 +29,19 @@ router.get("/", checkAutenticiation, async (req, res) => {
   const mostLikedAll = mostLikedRaw.map((post) => post.get({ plain: true }));
   const mostLiked = mostLikedAll.slice(0, 4);
 
+  //SORT BY NEWSEST POSTS_RAW
+  const newestPostsRaw = postsRaw.sort((a, b) =>
+    a.id < b.id ? 1 : -1
+  );
+  const newestPostsAll = newestPostsRaw.map((post) => post.get({ plain: true }));
+  const newestPosts = newestPostsAll.slice(0, 4);
+
   //render home with most liked and commented posts
 
   res.render("home", {
     mostCommented,
     mostLiked,
+    newestPosts,
     loggedIn: req.session.loggedIn,
   });
 });

@@ -9,8 +9,12 @@ router.get('/', async (req, res) => {
     try {
 
         const posts = await Post.findAll({ include: [Comment, User, Like] });
+
+        const newestPosts = posts.sort((a, b) =>
+        a.id < b.id ? 1 : -1
+      );
  
-        res.status(200).json(posts);
+        res.status(200).json(newestPosts);
 
     }
     catch (err) {
