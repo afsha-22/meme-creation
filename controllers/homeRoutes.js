@@ -82,8 +82,6 @@ router.get("/meme/:id", checkAutenticiation, async (req, res) => {
     isUser = false;
   };
 
-  console.log(isUser);
-
   //render view-meme with indivual post
 
   res.render("view-meme", {
@@ -101,14 +99,14 @@ router.get("/meme/:id", checkAutenticiation, async (req, res) => {
 router.get("/search-meme", checkAutenticiation, async (req, res) => {
   const userName = req.session.userName;
   const images = await getImages("funny&per_page=12");
-  res.render("search-meme", { images, userName });
+  res.render("search-meme", { images, userName, loggedIn: req.session.loggedIn });
 });
 
 router.get("/create-meme/:id", checkAutenticiation, async (req, res) => {
   const { id } = req.params;
   const image = await getOneImage(id);
 
-  res.render("create-meme", { image });
+  res.render("create-meme", { image, loggedIn: req.session.loggedIn });
 });
 
 /// Render the login page.  If the user is logged in, redirect to the home page.
