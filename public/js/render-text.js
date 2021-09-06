@@ -1,4 +1,4 @@
-const baseFontClasses = 'position-absolute text-center w-100 text-white'
+const baseFontClasses = 'position-absolute text-center w-100 text-white fs-1 fw-bold'
 
 const radioElementsPositions = document.querySelectorAll('.text-position');
 const radioElementsColour = document.querySelectorAll('.text-colour');
@@ -39,48 +39,3 @@ document
 radioElementsPositions.forEach(radioEL => {
     radioEL .addEventListener('click', renderTextPosition);
 });
-
-// const renderTextColour = (event) => {
-
-//     const captionEL = document.querySelector('#displayCaption');
-//     const captionELClasses = captionEL.getAttribute('class');
-
-//     const splitClasses = captionELClasses.split(' ');
-
-//     const currentTextColour = () {
-//     }
-    
-//     splitClasses.includes('white') ?
-//         const currentTextColour = splitClasses.find(subclass => subclass == 'white' ) :
-
-
-
-    
-//     splitClasses.find(subclass => subclass == 'white' );
-//     const currentTextColourWhite = splitClasses.find(subclass => subclass == 'black' );
-
-//     const newColour = event.target.getAttribute('id');
-
-//     if(currentTextColour.includes(newColour)) {
-//         return
-//     }
-//     else {
- 
-//         const removeClassArray = splitClasses.filter(item => {
-//             return item !== currentTextColour
-//         });
-    
-//         console.log(removeClassArray);
-         
-//         removeClassArray.push(newColour);
-    
-//         const newClasses = removeClassArray.join(' ');
-    
-//         captionEL.setAttribute('class', newClasses);
-//     }
-// };
-
-
-// radioElementsColour.forEach(radioEL => {
-//     radioEL .addEventListener('click', renderTextColour);
-// });
