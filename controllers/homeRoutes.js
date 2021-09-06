@@ -29,11 +29,19 @@ router.get("/", checkAutenticiation, async (req, res) => {
   const mostLikedAll = mostLikedRaw.map((post) => post.get({ plain: true }));
   const mostLiked = mostLikedAll.slice(0, 4);
 
+  //SORT BY NEWSEST POSTS_RAW
+  const newestPostsRaw = postsRaw.sort((a, b) =>
+    a.id < b.id ? 1 : -1
+  );
+  const newestPostsAll = newestPostsRaw.map((post) => post.get({ plain: true }));
+  const newestPosts = newestPostsAll.slice(0, 4);
+
   //render home with most liked and commented posts
 
   res.render("home", {
     mostCommented,
     mostLiked,
+    newestPosts,
     loggedIn: req.session.loggedIn,
   });
 });
@@ -73,6 +81,15 @@ router.get("/meme/:id", checkAutenticiation, async (req, res) => {
   const likeCount = post.likes.length;
   const commentCount = post.comments.length;
 
+  let isUser = false;
+
+  if(post.user_id === req.session.userID) {
+    isUser = true;
+  }
+  else {
+    isUser = false;
+  };
+
   //render view-meme with indivual post
 
   res.render("view-meme", {
@@ -80,6 +97,7 @@ router.get("/meme/:id", checkAutenticiation, async (req, res) => {
     comments,
     likeCount,
     commentCount,
+    isUser,
     loggedIn: req.session.loggedIn,
   });
 });
@@ -89,14 +107,14 @@ router.get("/meme/:id", checkAutenticiation, async (req, res) => {
 router.get("/search-meme", checkAutenticiation, async (req, res) => {
   const userName = req.session.userName;
   const images = await getImages("funny&per_page=12");
-  res.render("search-meme", { images, userName });
+  res.render("search-meme", { images, userName, loggedIn: req.session.loggedIn });
 });
 
 router.get("/create-meme/:id", checkAutenticiation, async (req, res) => {
   const { id } = req.params;
   const image = await getOneImage(id);
 
-  res.render("create-meme", { image });
+  res.render("create-meme", { image, loggedIn: req.session.loggedIn });
 });
 
 /// Render the login page.  If the user is logged in, redirect to the home page.

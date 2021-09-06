@@ -9,8 +9,12 @@ router.get('/', async (req, res) => {
     try {
 
         const posts = await Post.findAll({ include: [Comment, User, Like] });
+
+        const newestPosts = posts.sort((a, b) =>
+        a.id < b.id ? 1 : -1
+      );
  
-        res.status(200).json(posts);
+        res.status(200).json(newestPosts);
 
     }
     catch (err) {
@@ -44,5 +48,20 @@ router.post('/', async (req, res) => {
       res.status(400).json(err);
     }
 });
+
+router.delete('/:postID', async (req, res) => {
+    try {
+  
+        const { postID } = req.params;
+  
+        const deletePost = await Post.destroy({where: {id: postID}} );
+        
+        res.status(200).json(deletePost);
+  
+    }
+    catch (err) {
+      res.status(400).json(err);
+    }
+  });
 
 module.exports = router;

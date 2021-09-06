@@ -7,27 +7,21 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
-
-     <link rel="stylesheet" href="/css/login.css">
-
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/login.css">
     <title>meme-creation</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-dark text-white">
     <div class="container-fluid">
         <div class="header">
-          {{!-- <img src="img/logo.png" alt="logo" /> --}}
-          <h1>Meme Creation</h1>
+          <a href="/" class="text-white"><h1>Meme Creation</h1></a>
         </div>
-        {{!-- <h1 class=".bg-light ">Meme Creation</h1> --}}
         <div class="d-flex">
             <div class="px-2 nav-item"><a href="/" class="text-light">Home</a></div>
             <div class="px-2 nav-item"><a href="/profile" class="text-light">My Memes</a></div>
             <div class="px-2 nav-item"><a href="/search-meme" class="text-light">Create Memes</a></div>
-            <div class="px-2 nav-item"><a href="" class="text-light">Settings</a></div>
-
               {{!--login div --}}
               <div class="px-2 nav-item" id="loginNav"><a href="" class="text-light" >
                 {{#if loggedIn}}
