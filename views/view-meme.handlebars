@@ -1,7 +1,17 @@
 <section class="container">
 
-    <div class="card m-auto w-max-content h-max-content">
-        <div class="card-header">Post by {{post.user.userName}}</div>
+    <div class="card m-auto w-max-content h-max-content ">
+        <div id="userheading" class="card-header d-flex justify-content-between h3">Post by {{post.user.userName}}
+            {{#if isUser}}
+                <a href="#">
+                    <i id="check-delete" class="bi bi-x-circle text-danger"></i>
+                </a>
+                <div id="confirm-delete" class="btn-group d-none" role="group" aria-label="Basic mixed styles example">
+                    <button id="no-delete" type="button" class="btn btn-success">Naa</button>
+                    <button id="delete-post" type="button" class="btn btn-danger">Yes, get rid of it</button>
+                </div>
+            {{/if}}
+        </div>        
         <div class="d-flex justify-content-center position-relative">
             <img id="memeImage" class="" src="{{post.image_url_medium}}">
             <p class="{{textPositionClass post.image_position}} position-absolute text-center w-100 text-white" id="displayCaption">{{post.image_caption}}</p>
@@ -22,6 +32,8 @@
     </div>
 
 </div>  
-
 </section>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/delete-post.js"></script>
+
 

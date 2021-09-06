@@ -73,6 +73,17 @@ router.get("/meme/:id", checkAutenticiation, async (req, res) => {
   const likeCount = post.likes.length;
   const commentCount = post.comments.length;
 
+  let isUser = false;
+
+  if(post.user_id === req.session.userID) {
+    isUser = true;
+  }
+  else {
+    isUser = false;
+  };
+
+  console.log(isUser);
+
   //render view-meme with indivual post
 
   res.render("view-meme", {
@@ -80,6 +91,7 @@ router.get("/meme/:id", checkAutenticiation, async (req, res) => {
     comments,
     likeCount,
     commentCount,
+    isUser,
     loggedIn: req.session.loggedIn,
   });
 });
