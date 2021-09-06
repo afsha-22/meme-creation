@@ -138,7 +138,7 @@ router.get("/signup", (req, res) => {
 });
 
 router.get("/passwordreset", (req, res) => {
-  res.render("PasswordReset");
+  res.render("passwordReset");
 });
 
 router.get("/comment", (req, res) => {
