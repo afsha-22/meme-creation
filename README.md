@@ -43,7 +43,7 @@ For any questions, please reach out to the author below:
   * amber.afsha22@gmail.com
 
 * Tika Kandel
-  * https://github.com/afsha-22
+  * https://github.com/tikakandel
   * tika.kandel.06@gmail.com
 
 ## License
